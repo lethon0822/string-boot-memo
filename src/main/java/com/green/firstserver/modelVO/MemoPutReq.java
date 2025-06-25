@@ -1,4 +1,4 @@
-package com.green.firstserver.model;
+package com.green.firstserver.modelVO;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -6,7 +6,8 @@ import lombok.ToString;
 
 @Getter
 @Setter
-public class MemoGetRes {
+@ToString
+public class MemoPutReq {
     private int id;
     private String title;
     private String content;

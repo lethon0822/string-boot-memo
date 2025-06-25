@@ -1,8 +1,9 @@
 package com.green.firstserver;
 
-import com.green.firstserver.model.MemoGetOneRes;
-import com.green.firstserver.model.MemoGetRes;
-import com.green.firstserver.model.MemoPostReq;
+import com.green.firstserver.modelVO.MemoGetOneRes;
+import com.green.firstserver.modelVO.MemoGetRes;
+import com.green.firstserver.modelVO.MemoPostReq;
+import com.green.firstserver.modelVO.MemoPutReq;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -23,6 +24,14 @@ public class MemoService {
 
     public MemoGetOneRes selMemo(int id) {
         return memoMapper.selMemo(id);
+    }
+
+    public int updMemo(MemoPutReq req) {
+        return memoMapper.updMemo(req);
+    }
+
+    public int delMemo(int id) {
+        return memoMapper.delMemo(id);
     }
 
 }

@@ -1,8 +1,9 @@
 package com.green.firstserver;
 
-import com.green.firstserver.model.MemoGetOneRes;
-import com.green.firstserver.model.MemoGetRes;
-import com.green.firstserver.model.MemoPostReq;
+import com.green.firstserver.modelVO.MemoGetOneRes;
+import com.green.firstserver.modelVO.MemoGetRes;
+import com.green.firstserver.modelVO.MemoPostReq;
+import com.green.firstserver.modelVO.MemoPutReq;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,6 +32,21 @@ public class MemoController {
     public String postMemo(@RequestBody MemoPostReq req){   // @RequestBody : JSON으로 보낸 데이터를 받음
         System.out.println("postMemo:"+req);
         int result = memoService.insMemo(req);
+        return result == 1 ? "성공" : "실패";
+    }
+
+    @PutMapping("/memo")
+    // @PathVariable int id, 제외
+    public String putMemo(@RequestBody MemoPutReq req){
+        System.out.println("putMemo:"+req);
+        int result = memoService.updMemo(req);
+        return result == 1 ? "성공" : "실패";
+    }
+
+    @DeleteMapping("/memo")
+    public String deleteMemo(@RequestParam int id){
+        System.out.println("deleteMemo:"+id);
+        int result = memoService.delMemo(id);
         return result == 1 ? "성공" : "실패";
     }
 }
